@@ -3,7 +3,7 @@
   'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
--->
+
 <ion-view title="{{enemy.name}}">
   <ion-content has-header="true" padding="true">
   {{enemy.name}}
@@ -11,3 +11,25 @@
   
   </ion-content>
 </ion-view>
+-->
+
+<ion-view title="{{enemy.name}}">
+  <ion-content has-header="true" padding="true">
+
+      <div class="details">
+          <img ng-src="http://locarda.herokuapp.com/{{enemy.image_url}}" width="100" height="100"/>
+          <h4><strong>{{enemy.name}}</strong></br> <small>{{enemy.description}}</small></br> 
+		  <!--<small>{{enemy.full_name}}&nbsp;</small></h4></br> -->
+		  <h4>{{enemy.rewards}}</h4></br> 
+	  </div>
+      <div class="list card">         
+          <a class="item item-icon-left"  ><i class="icon ion-flag"></i>Va&#353;i bodovi: <p><span class="badge badge-assertive">{{enemy.points}}4</span></p></a>
+          <a class="item item-icon-left" href="tel:{{employee.officePhone}}"><i class="icon ion-ios7-telephone"></i>Tel.<p>{{enemy.tel}}052 544 852</p></a>
+          <a class="item item-icon-left" href="tel:{{employee.cellPhone}}"><i class="icon ion-ios7-telephone"></i>Mob.<p>{{enemy.mob}}098 1754 141</p></a>
+          <a class="item item-icon-left" href="sms:{{employee.cellPhone}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{enemy.mob}}098 1754 141</p></a>
+          <a class="item item-icon-left" href="mailto:{{employee.email}}"><i class="icon ion-ios7-email"></i>Email<p>{{enemy.email}}fresh@fresh.hr</p></a>
+		  <a class="item item-icon-left" ><i class="icon ion-clipboard"></i>Adresa<p>{{enemy.address}} Anticova 22, 52100 Pula</p></a>
+      </div>
+
+  </ion-content>
+</view>

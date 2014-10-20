@@ -11,13 +11,14 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('EnemiesCtrl', function($scope, Enemies) {
+.controller('EnemiesCtrl', function($scope, Enemies, $stateParams) {
   $scope.enemies = Enemies.all();
   $scope.checkIn = function() {
    alert('Call to Rails Locarda API');
    /*TODO: checkIn user to clicked place*/
    Enemies.postIt();
    console.log('Enemies.postIt() called');
+   alert($stateParams);
    
    
    
