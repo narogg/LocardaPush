@@ -20,11 +20,11 @@ angular.module('starter.controllers', [])
   $scope.enemy = Enemies.get($stateParams.enemyId);
   
    $scope.checkIn = function() {
-   alert('Call to Rails Locarda API: '+$stateParams.enemyId);
+   //alert('Call to Rails Locarda API: '+$stateParams.enemyId);
    /*TODO: checkIn user to clicked place*/
    
    Enemies.postIt($stateParams.enemyId);
-   console.log('Enemies.postIt() called');
+   //console.log('Enemies.postIt() called');
 
    
    }

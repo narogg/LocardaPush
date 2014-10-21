@@ -1,17 +1,16 @@
 <ion-view title="Mjesta">
   <ion-content >
-      <ion-item ng-repeat="enemy in enemies" type="item-text-wrap" href="#/tab/enemy/{{enemy.id}}">
-	  <div class="row" >
-		<div class="col col-67">       
-		{{enemy.name}}</br>
+      <ion-item ng-repeat="enemy in enemies" type="item-text-wrap" href="#/tab/enemy/{{enemy.id}}">	  
+	        
+		<strong>{{enemy.name}}</strong></br>
 		<small>{{enemy.full_name}}</small>		
-		</div>
+		
 		  <!--<div class="col col-33">
 			<button  class="button button-calm button-small" ng-click="checkIn()">
 			 Prijavi se
 			 </button>
 		  </div>-->
-		 </div>		
+		 	
       </ion-item>
     
   

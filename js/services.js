@@ -49,8 +49,8 @@ angular.module('starter.services', [])
 	postIt : function(placeId){	
 	$http.post('http://localhost:3000/carts/checkin',{placeId:placeId}).success(function(data){
 	//$http.get('http://localhost:3000/home/api').success(function(data){
-	alert('Uspjesna prijava!');
-	}).error(function(data){alert ('Neuspjesna prijava!\nNapomenite osoblju.') })
+	alert('Prijavljeni ste!');
+	}).error(function(data){alert ('Niste prijavljeni!\nNapomenite osoblju.') })
 	}
 	/**/
 	

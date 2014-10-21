@@ -1,20 +1,21 @@
 <ion-view title="Postavke">
   <ion-content class="padding">
-    <h3>Postavke</h3>
-		<div class="list">
+	<div class="list">
 	<label class="item item-input">
-		<input type="text" placeholder="Mail">
+		<input type="text" placeholder="Email">
 	</label>
 	<label class="item item-input">
-		<input type="text" placeholder="Lozinka">
+		<input type="text" placeholder="Password">
 	</label>
+	<!--
 	<label class="item item-input">
-		<textarea placeholder="Ime"></textarea>
+		<input type="text" placeholder="Ime">
 	</label>
+	-->
 	</div>
-	
-	<ul class="list">
 
+  <!--
+  <ul class="list">
   <li class="item item-toggle">
      Identificiraj se mail adresom?
      <label class="toggle toggle-positive">
@@ -24,12 +25,16 @@
        </div>
      </label>
   </li>
-
-
-</ul>
+  </ul>
+  -->
 	</br>
 	<button class="button button-assertive button-small ">
-		Submit
+		Registriraj
 	</button>
+	
+	<fb:login-button show-faces="true" max-rows="1" 
+	size="large"></fb:login-button>
+	
+	
   </ion-content>
 </ion-view>
