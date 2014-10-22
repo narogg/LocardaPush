@@ -55,8 +55,7 @@
         // device APIs are available
         //
         function onDeviceReady() {
-            checkConnection();
-			alert('index');
+            checkConnection();			
         }
 
         function checkConnection() {
@@ -72,7 +71,9 @@
             states[Connection.CELL]     = 'Cell generic connection';
             states[Connection.NONE]     = 'No network connection';
 
-            alert('Connection type: ' + states[networkState]);
+             if(networkState == Connection.NONE) {
+			   alert('Aktivirajte podatkovnu vezu!\nTrenutna veza: ' + states[networkState]);
+			 }
         }
 
     </script>

@@ -22,20 +22,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   
   
   
-	if(window.Connection) {
-	//alert('u if(window.Connection)  sam');
-       if(navigator.connection.type == Connection.NONE) {
-           $ionicPopup.confirm({
-               title: "Upozorenje!",
-               content: "Aktivirajte podatkovnu vezu."
-           })
-           .then(function(result) {
-               if(!result) {
-                   ionic.Platform.exitApp();
-               }
-           });
-       }
-    }
+	//if(window.Connection) {
+	////alert('u if(window.Connection)  sam');
+    //   if(navigator.connection.type == Connection.NONE) {
+    //       $ionicPopup.confirm({
+    //           title: "Upozorenje!",
+    //           content: "Aktivirajte podatkovnu vezu."
+    //       })
+    //       .then(function(result) {
+    //           if(!result) {
+    //               ionic.Platform.exitApp();
+    //           }
+    //       });
+    //   }
+    //}
     
   });
 })
