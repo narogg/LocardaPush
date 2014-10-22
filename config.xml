@@ -8,9 +8,6 @@
         Goran M.
     </author>
 	
-	<gap:plugin name="org.apache.cordova.contacts" />	
-	<gap:plugin name="org.apache.cordova.network-information" />
-	
     <content src="index.html" />
     <access origin="*" />
     <preference name="fullscreen" value="true" />
