@@ -23,6 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   
   
   if(window.Connection) {
+  alert('u if(window.Connection)  sam');
                 if(navigator.connection.type == Connection.NONE) {
                     $ionicPopup.confirm({
                         title: "Upozorenje!",

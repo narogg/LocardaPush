@@ -37,6 +37,8 @@ angular.module('starter.controllers', [])
 .controller('EnemiesCtrl', function($scope, $stateParams, Enemies) {
   $scope.enemies = Enemies.all();
   
+
+  
   /*
   // Search function, todo
    $scope.search = function () {
