@@ -1,18 +1,39 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope,$state) {
+	$scope.settings = function() {
+		//go to dash state
+	$state.go('tab.dash')
+	}
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('HomeCtrl', function($scope,$state) {
+	$scope.home = function() {
+		//go to dash state
+	$state.go('tab.account');
+	}
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+.controller('SignUpCtrl', function($scope,$state) {
+	$scope.signUp = function() {
+		//go to dash state
+	alert('Uskoro!');
+	$state.go('tab.account');
+	}
 })
+
 
 .controller('EnemiesCtrl', function($scope, $stateParams, Enemies) {
   $scope.enemies = Enemies.all();
+  
+  /*
+  // Search function, todo
+   $scope.search = function () {
+            Enemies.findByName($scope.searchKey).then(function (employees) {
+                $scope.employees = employees;
+            });
+        }
+  */
 
 })
 
