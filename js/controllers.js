@@ -14,10 +14,21 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('SignUpCtrl', function($scope,$state) {
+.controller('SignUpCtrl', function($scope, $state, $ionicPopup) {
 	$scope.signUp = function() {
-		//go to dash state
-	alert('Uskoro!');
+	//go to dash state	
+	// A custom popup
+	$ionicPopup.alert({ 
+	 title: 'Obavijest',
+	 template: 'Uskoro!',	 
+	 buttons: [
+	  { text: 'OK',      
+	   type: 'button-calm'}
+	 ]
+	});
+	
+	
+	//alert('Uskoro!');
 	$state.go('tab.account');
 	}
 })
