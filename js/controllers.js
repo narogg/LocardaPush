@@ -7,6 +7,14 @@ angular.module('starter.controllers', [])
 	}
 })
 
+.controller('RefreshCtrl', function($scope,$state,$window) {
+	$scope.refresh = function() {
+	//refresh state
+	$window.location.reload(true);
+	}
+})
+
+
 .controller('HomeCtrl', function($scope,$state) {
 	$scope.home = function() {
 		//go to dash state
