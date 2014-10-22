@@ -8,6 +8,15 @@
         Goran M.
     </author>
 	
+	
+	<gap:plugin name="org.apache.cordova.contacts" />
+	<gap:plugin name="org.apache.cordova.camera" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<icon src="icon.png" />
+	
+	<gap:platform name="android" />
+    <gap:platform name="winphone" />
+	
     <content src="index.html" />
     <access origin="*" />
     <preference name="fullscreen" value="true" />
