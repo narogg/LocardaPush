@@ -30,7 +30,7 @@
     <ion-nav-bar class="bar-calm nav-title-slide-ios7">
       <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
       </ion-nav-back-button>
-	     <ion-nav-button class="button icon ion-ios7-loop-strong pull-right" ng-controller="RefreshCtrl" ng-click="refresh()"></ion-nav-button>
+	     <ion-nav-button class="button icon ion-ios7-loop-strong pull-right" ng-controller="RefreshCtrl" ng-click="refresh()" ng-if="$root.showRefreshButton"></ion-nav-button>
     </ion-nav-bar>
 	<!-- 	
 	<ion-nav-button class="button icon ion-home pull-left" ng-controller="HomeCtrl" ng-click="home()"></ion-nav-button>

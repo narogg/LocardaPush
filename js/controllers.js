@@ -17,8 +17,9 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope,$state) {
 	$scope.home = function() {
-		//go to dash state
+		//go to home state
 	$state.go('tab.account');
+	
 	}
 })
 
@@ -42,8 +43,14 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('EnemiesCtrl', function($scope, $stateParams, Enemies) {
+.controller('EnemiesCtrl', function($scope, $stateParams, Enemies ) {
   $scope.enemies = Enemies.all();
+   
+   $scope.$root.showRefreshButton = true;
+   
+   $scope.$on("$stateChangeStart", function() {
+   $scope.$root.showRefreshButton = false;
+  })
   
 
   
