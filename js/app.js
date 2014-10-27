@@ -54,18 +54,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       abstract: true,
       templateUrl: "templates/tabs.html"
     })
-
+	
+	// Login state (http://technpol.wordpress.com/2013/09/23/angularjs-and-devise-authentication-with-a-rails-server/)
+	 .state( 'tab.dash', {
+     url: '/dash',
+	 views: {
+      "tab-dash": {
+        controller: 'DashCtrl',
+        templateUrl: 'templates/tab-dash.html'
+		}
+		},
+		data:{ pageTitle: 'Login' }
+	 })
+		
+		
+	
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
-      views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
-        }
-      }
-    })
+   // .state('tab.dash', {
+   //   url: '/dash',
+   //   views: {
+   //     'tab-dash': {
+   //       templateUrl: 'templates/tab-dash.html',
+   //       controller: 'DashiCtrl'
+   //     }
+   //   }
+   // })
 
 
 	

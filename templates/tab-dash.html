@@ -4,10 +4,10 @@
   <ion-content class="padding">
 	<div class="list">
 	<label class="item item-input">
-		<input type="text" placeholder="Email">
+		<input type="text" ng-model="login_user.email" placeholder="Email" >
 	</label>
 	<label class="item item-input">
-		<input type="text" placeholder="Password">
+		<input type="password" ng-model="login_user.password" placeholder="Password">
 	</label>
 	<!--
 	<label class="item item-input">
@@ -16,7 +16,7 @@
 	-->
 	</div>
 	</br>
-	<button class="button  button-block button-assertive " ng-controller="SignUpCtrl" ng-click="signUp()">
+	<button class="button  button-block button-assertive " ng-controller="DashCtrl" ng-click="login()">
 		Registriraj
 	</button>
 
