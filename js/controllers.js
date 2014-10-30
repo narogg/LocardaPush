@@ -11,12 +11,12 @@ angular.module('starter.controllers', [])
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'DashCtrl', function LoginController( $scope, $http ) {
+.controller( 'DashCtrl', function LoginController( $scope, $http, $state ) {
   $scope.login_user = {email: null, password: null};
   $scope.login_error = {message: null, errors: {}};    
   // Locally stored email value that will be shown in settings (dash) view
-  localStorage.removeItem('email');
-  localStorage.removeItem('id');
+  //localStorage.removeItem('email');
+  //localStorage.removeItem('id');
   
   
   $scope.localEmail = localStorage.getItem('email');
@@ -72,6 +72,7 @@ angular.module('starter.controllers', [])
 			
 		  //alert(parameters.error_entity.message);
           $scope.reset_users();
+		  $state.go('tab.account');
 		  }
 		  else {
 				//if
