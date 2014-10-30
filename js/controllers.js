@@ -24,7 +24,8 @@ angular.module('starter.controllers', [])
 
   $scope.signUp = function() {
     $scope.submit({method: 'POST', 
-                   url: 'http://localhost:3000/users.json',//! POST to /users.json creates a new user
+                   //url: 'http://localhost:3000/users.json',//! POST to /users.json creates a new user
+				   url: 'http://locarda.herokuapp.com:3000/users.json',//! POST to /users.json creates a new user
                    data: {user: {email: $scope.login_user.email, password: $scope.login_user.password}},
                    success_message: "You have been logged in.",
                    error_entity: $scope.login_error});
@@ -32,7 +33,8 @@ angular.module('starter.controllers', [])
   
    $scope.login = function() {
     $scope.submit({method: 'POST', 
-                   url: 'http://localhost:3000/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
+                   //url: 'http://localhost:3000/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
+				   url: 'http://locarda.herokuapp.com:3000/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
                    data: {user: {email: $scope.login_user.email, password: $scope.login_user.password}},
                    success_message: "You have been logged in.",
                    error_entity: $scope.login_error});
