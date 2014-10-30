@@ -8,43 +8,19 @@ angular.module('starter.controllers', [])
 })
 
 
-
-/**
- * And of course we define a controller for our route.
- */
-//.controller( 'DashCtrl', function LoginController( $scope, $http ) {
-//  $scope.login_user = {email: null, password: null};
-//  
-//  $scope.login = function() {
-//    $http.post('http://localhost:3000/users/sign_in.json', {user: {email: $scope.login_user.email, password: $scope.login_user.password}}).
-//        success(function(data, status) {
-//          $scope.status = status;
-//          $scope.data = data;
-//		  alert('sucesso!');
-//		  alert('data'+$scope.data);
-//        }).
-//        error(function(data, status) {
-//          $scope.data = data || "Request failed";
-//          $scope.status = status;
-//		  alert('status error: '+$scope.status + $scope.data);
-//      });
-//	
-//	
-//    console.log('v loginu sam!');
-//  
-//  };
-//
-//  $scope.logout = function() {
-//    $http({method: 'DELETE', url: 'http://localhost:3000/users/sign_out.json', data: {}});
-//  };
-//})
-
 /**
  * And of course we define a controller for our route.
  */
 .controller( 'DashCtrl', function LoginController( $scope, $http ) {
   $scope.login_user = {email: null, password: null};
   $scope.login_error = {message: null, errors: {}};    
+  // Locally stored email value that will be shown in settings (dash) view
+  localStorage.removeItem('email');
+  localStorage.removeItem('id');
+  
+  
+  $scope.localEmail = localStorage.getItem('email');
+  //alert('Im in DashCtrl and email is: '+$scope.localEmail);
 
   $scope.signUp = function() {
     $scope.submit({method: 'POST', 
@@ -77,13 +53,32 @@ angular.module('starter.controllers', [])
            data: parameters.data})
       .success(function(data, status){
         if (status == 201 || status == 204){
+			if (typeof data.id != 'undefined') {
           parameters.error_entity.message = parameters.success_message;
-		  //parameters.error_entity.message = 'Ulogirali ste se!';
-		  console.log('Status: '+status +', message: '+parameters.error_entity.message);
+		  //parameters.error_entity.message = 'Ulogirali ste se!';			
+			console.log('Status: '+status +', message: '+parameters.error_entity.message+'User id je: '+ data.id);
+			//if user.id is undefined go to login with error msg because it is a unexisting user - either register or use existing...
+			
+			// If there is no userId locally - store it, otherwise don't touch it - for now
+			//alert(localStorage.getItem('id'));
+			 //if(!!localStorage.getItem('id')){
+				window.localStorage['id'] = data.id;
+				window.localStorage['email'] = data.email;
+				alert('Hello, ' + data.email +' with ID of: '+data.id);
+			//};			
+			
+			
+			
+			
 		  //alert(parameters.error_entity.message);
           $scope.reset_users();
+		  }
+		  else {
+				//if
+				parameters.error_entity.message = "Problem prilikom prijave. Kontaktirajte Administratora.";
+				}
         } else {
-		  console.log(status);
+		  console.log(status+data.id);
 		  alert('Error: '+status);
           if (data.error) {
             parameters.error_entity.message = data.error;
@@ -178,15 +173,20 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('EnemiesDetailCtrl', function($scope, $stateParams, Enemies) {
+.controller('EnemiesDetailCtrl', function($scope, $stateParams, Enemies,$state) {
   $scope.enemy = Enemies.get($stateParams.enemyId);
   
    $scope.checkIn = function() {
-   //alert('Call to Rails Locarda API: '+$stateParams.enemyId);
+   alert('Call to Rails Locarda API checkIn, userId: : '+window.localStorage['id']+' placeId: '+$stateParams.enemyId);
    /*TODO: checkIn user to clicked place*/
-   
-   Enemies.postIt($stateParams.enemyId);
+   if(typeof window.localStorage['id']==='undefined'){
+   alert ('Morate se prijaviti!');
+   $state.go('tab.dash');
+   }
+   else {
+   Enemies.postCheckIN(window.localStorage['id'],$stateParams.enemyId);
    //console.log('Enemies.postIt() called');
+   }
 
    
    }
