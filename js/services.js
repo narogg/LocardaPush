@@ -25,7 +25,7 @@ angular.module('starter.services', [])
 	    /*Posting here*/
 	    postCheckIN : function(userId,placeId){	
 	    //$http.post('http://localhost:3000/carts/checkin',{userId:userId,placeId:placeId}).success(function(data){
-	    $http.post('http://locarda.herokuapp.com/carts/checkin',{userId:userId,placeId:placeId})).success(function(data){
+	    $http.post('http://locarda.herokuapp.com/carts/checkin',{userId:userId,placeId:placeId}).success(function(data){
 	    alert('Prijavljeni ste!');
 	    }).error(function(data)
 		{alert ('Niste prijavljeni!\nNapomenite osoblju.') }
