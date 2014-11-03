@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   $scope.signUp = function() {
     $scope.submit({method: 'POST', 
                    //url: 'http://localhost:3000/users.json',//! POST to /users.json creates a new user
-				   url: 'http://locarda.herokuapp.com:3000/users.json',//! POST to /users.json creates a new user
+				   url: 'http://locarda.herokuapp.com/users.json',//! POST to /users.json creates a new user
                    data: {user: {email: $scope.login_user.email, password: $scope.login_user.password}},
                    success_message: "You have been logged in.",
                    error_entity: $scope.login_error});
@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
    $scope.login = function() {
     $scope.submit({method: 'POST', 
                    //url: 'http://localhost:3000/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
-				   url: 'http://locarda.herokuapp.com:3000/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
+				   url: 'http://locarda.herokuapp.com/users/sign_in.json',//! POST to /users/sing_in.json logs in an existing user
                    data: {user: {email: $scope.login_user.email, password: $scope.login_user.password}},
                    success_message: "You have been logged in.",
                    error_entity: $scope.login_error});
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 
   $scope.logout = function() {
     $scope.submit({method: 'DELETE', 
-                   url: 'http://localhost:3000/users/sign_out.json',
+                   url: 'http://localhost/users/sign_out.json',
                    success_message: "You have been logged out.",
                    error_entity: $scope.login_error});
   };
