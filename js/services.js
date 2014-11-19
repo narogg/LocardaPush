@@ -1,17 +1,32 @@
 angular.module('starter.services', [])
 
 
-.factory('Enemies', ['$http', function($http) {
+.factory('Enemies', ['$http', function($http, userId) {
     
   // Use a resource here that returns a JSON array
 	var enemies = this;
 	enemies = []; //init empty array
+	//alert("user_id: "+window.localStorage['id']);
+	userId = window.localStorage['id'];
 	
-	$http.get('http://locarda.herokuapp.com/home/api').success(function(data){
-	//$http.get('http://localhost:3000/home/api').success(function(data){
-	enemies =  data;
-	});
+	
+	
+	//$http.get('http://locarda.herokuapp.com/home/api').success(function(data){
+	//$http.get('http://localhost:3000/home/api',{userId:userId}).success(function(data){
+	//enemies =  data;
+	//console.log('$http.get'+data);
+	//});
 
+	$http({
+    //url: "http://localhost:3000/home/api", 
+	url:"http://locarda.herokuapp.com/home/api",
+    method: "GET",
+    params: {user_id: userId}
+	}).success(function(data){
+	enemies =  data;
+	})
+	;
+	
 	return {
 		all: function() {
 	    return enemies;

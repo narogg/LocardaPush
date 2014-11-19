@@ -2,9 +2,9 @@
 <widget id="org.goran.ionicdirectory" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" 
 xmlns:gap = "http://phonegap.com/ns/1.0"
 xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Locarda v 2.0</name>
+    <name>Locarda</name>
     <description>
-        Locarda - loyalty card app
+        Locarda - kartica vjernosti
     </description>
     <author email="gmandini@net.hr" href="http://nekaj.org">
         Goran M.

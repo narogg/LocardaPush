@@ -36,12 +36,13 @@
 	   
 	  
       <div class="list card">
-          <a class="item item-icon-left"  ><i class="icon ion-flag"></i>Va&#353;i bodovi: <p><span class="badge badge-assertive">{{enemy.points}}4</span></p></a>
-          <a class="item item-icon-left" href="tel:{{employee.officePhone}}"><i class="icon ion-ios7-telephone"></i>Tel.<p>{{enemy.tel}}052 544 852</p></a>
-          <a class="item item-icon-left" href="tel:{{employee.cellPhone}}"><i class="icon ion-ios7-telephone"></i>Mob.<p>{{enemy.mob}}098 1754 141</p></a>
-          <a class="item item-icon-left" href="sms:{{employee.cellPhone}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{enemy.mob}}098 1754 141</p></a>
-          <a class="item item-icon-left" href="mailto:{{employee.email}}"><i class="icon ion-ios7-email"></i>Email<p>{{enemy.email}}fresh@fresh.hr</p></a>
-		  <a class="item item-icon-left" ><i class="icon ion-clipboard"></i>Adresa<p>{{enemy.address}} Anticova 22, 52100 Pula</p></a>
+          <a class="item item-icon-left"  ><i class="icon ion-flag"></i>Va&#353;i bodovi: <p ng-show="enemy.points != null"><span class="badge badge-assertive">{{enemy.points}}</span></p>
+																						  <p ng-show="enemy.points == null"><span class="badge badge-assertive">0</span></p></a>
+          <a ng-show="enemy.tel != null" class="item item-icon-left" href="tel:{{employee.officePhone}}"><i class="icon ion-ios7-telephone"></i>Tel.<p>{{enemy.tel}}</p></a>
+          <a ng-show="enemy.mob != null" class="item item-icon-left" href="tel:{{employee.cellPhone}}"><i class="icon ion-ios7-telephone"></i>Mob.<p>{{enemy.mob}}</p></a>
+          <a ng-show="enemy.mob != null" class="item item-icon-left" href="sms:{{employee.cellPhone}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{enemy.mob}}</p></a>
+          <a ng-show="enemy.email != null" class="item item-icon-left" href="mailto:{{employee.email}}"><i class="icon ion-ios7-email"></i>Email<p>{{enemy.email}}</p></a>
+		  <a ng-show="enemy.address != null" class="item item-icon-left" ><i class="icon ion-clipboard"></i>Adresa<p>{{enemy.address}} </p></a>
       </div>
 
   </ion-content>

@@ -155,7 +155,8 @@ angular.module('starter.controllers', [])
 
 
 .controller('EnemiesCtrl', function($scope, $stateParams, Enemies ) {
-  $scope.enemies = Enemies.all();
+  //alert("window.localStorage['id']: "+window.localStorage['id']);
+  $scope.enemies = Enemies.all(window.localStorage['id']);
    
    $scope.$root.showRefreshButton = true;
    //$stateChangeStart - fired when the transition begins.
@@ -180,7 +181,7 @@ angular.module('starter.controllers', [])
   $scope.enemy = Enemies.get($stateParams.enemyId);
   
    $scope.checkIn = function() {
-   alert('Call to Rails Locarda API checkIn, userId: : '+window.localStorage['id']+' placeId: '+$stateParams.enemyId);
+   //alert('Call to Rails Locarda API checkIn, userId: : '+window.localStorage['id']+' placeId: '+$stateParams.enemyId);
    /*TODO: checkIn user to clicked place*/
    if(typeof window.localStorage['id']==='undefined'){
    alert ('Morate se prijaviti!');
