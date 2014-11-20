@@ -4,8 +4,9 @@ angular.module('starter.services', [])
 .factory('Enemies', ['$http', function($http, userId) {
     
   // Use a resource here that returns a JSON array
-	var enemies = this;
-	enemies = []; //init empty array
+	var enemies = null;
+	//enemies = []; //init empty array
+	//alert(enemies);
 	//alert("user_id: "+window.localStorage['id']);
 	userId = window.localStorage['id'];
 	
@@ -23,12 +24,13 @@ angular.module('starter.services', [])
     method: "GET",
     params: {user_id: userId}
 	}).success(function(data){
-	enemies =  data;
+	enemies = data;	
+			
 	})
 	;
 	
 	return {
-		all: function() {
+		all: function() {		
 	    return enemies;
 		},
 		// Simple index lookup  

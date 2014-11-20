@@ -1,11 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('DashiCtrl', function($scope,$state) {
-	$scope.settings = function() {
-		//go to dash state
-	$state.go('tab.dash')
-	}
-})
+//.controller('DashiCtrl', function($scope,$state) {
+//	$scope.settings = function() {
+//		//go to dash state
+//	$state.go('tab.dash')
+//	}
+//})
 
 
 /**
@@ -128,7 +128,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope,$state) {
 	$scope.home = function() {
-		//go to home state
+	//go to home state
 	$state.go('tab.account');
 	
 	}
@@ -154,10 +154,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('EnemiesCtrl', function($scope, $stateParams, Enemies ) {
-  //alert("window.localStorage['id']: "+window.localStorage['id']);
-  $scope.enemies = Enemies.all(window.localStorage['id']);
-   
+.controller('EnemiesCtrl', function($scope, $stateParams, Enemies,$state ) {
+  //alert("window.localStorage['id']: "+window.localStorage['id']);  
+  $scope.enemies = Enemies.all(window.localStorage['id']);   
    $scope.$root.showRefreshButton = true;
    //$stateChangeStart - fired when the transition begins.
    $scope.$on("$stateChangeStart", function() {

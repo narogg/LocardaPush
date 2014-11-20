@@ -1,17 +1,24 @@
-<ion-view title="Mjesta" >
-        
-
-
-	
-  <ion-content>
-      <ion-item ng-repeat="enemy in enemies" type="item-text-wrap" href="#/tab/enemy/{{enemy.id}}">	  
+<ion-view title="Mjesta" ¨ng-controller="EnemiesCtrl">	
+  <ion-content >
+      <div ng-show="enemies != null">
+	  <ion-item ng-repeat="enemy in enemies" type="item-text-wrap" href="#/tab/enemy/{{enemy.id}}">	  
 	        
 		<strong>{{enemy.name}}</strong></br>
 		<small>{{enemy.full_name}}</small>		
-		
-		  
 		 	
       </ion-item>  
+	  </div>
+	  <div ng-show="!enemies">
+	  
+	   <div class="card">
+		   <div class="item item-text-wrap">
+			  Tra&#382;im mjesta...<i class="ion-ios7-reloading"></i> &nbsp; Kliknite na  <a href="#/tab/dash"> postavke </a>ispod &nbsp;
+			  <i class="ion-arrow-down-c"></i>
+			</div>
+		</div>
+	  
+	  
+	  </div>
   </ion-content>
   
 

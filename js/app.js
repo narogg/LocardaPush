@@ -66,23 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 		},
 		data:{ pageTitle: 'Login' }
 	 })
-		
-		
-	
-    // Each tab has its own nav history stack:
 
-   // .state('tab.dash', {
-   //   url: '/dash',
-   //   views: {
-   //     'tab-dash': {
-   //       templateUrl: 'templates/tab-dash.html',
-   //       controller: 'DashiCtrl'
-   //     }
-   //   }
-   // })
-
-
-	
 	.state('tab.enemy-detail', {
       url: '/enemy/:enemyId',
       views: {
