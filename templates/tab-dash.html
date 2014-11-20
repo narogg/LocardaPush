@@ -3,7 +3,7 @@
 
   <ion-content class="padding" ng-controller="DashCtrl">
   <!-- if ng-model="localEmail" exists don't show the below form-->
-  <div ng-if="localEmail">Prijavljeni ste kao {{localEmail}}. Nema potrebe za izmjenama. </div>
+  <div ng-if="localEmail">Prijavljeni ste kao <strong>{{localEmail}}</strong>. Nema potrebe za izmjenama. </div>
   <div ng-if="!localEmail">Niste prijavljeni! Ako ste prvi put ovdje Registrirajte se. Ako ste to vec napravili, prijavite se s Vasim emailom. </div>
 	<div class="list">
 		<div ng-show="login_error.message" class="positive">
