@@ -145,7 +145,7 @@ angular.module('starter.controllers', [])
 	  { text: 'OK',      
 	   type: 'button-calm'}
 	 ]
-	});
+	}); 
 	
 	
 	//alert('Uskoro!');
@@ -153,31 +153,43 @@ angular.module('starter.controllers', [])
 	}
 })
 
+// Version 1, working, initial display empty (bug), enemies array empty
+//.controller('EnemiesCtrl', function($scope, $stateParams, Enemies,$state ) {
+//  //alert("window.localStorage['id']: "+window.localStorage['id']);  
+//  $scope.enemies = Enemies.all(window.localStorage['id']);   
+//   $scope.$root.showRefreshButton = true;
+//   //$stateChangeStart - fired when the transition begins.
+//   $scope.$on("$stateChangeStart", function() {
+//   $scope.$root.showRefreshButton = false;
+//  })
+//})
 
-.controller('EnemiesCtrl', function($scope, $stateParams, Enemies,$state ) {
-  //alert("window.localStorage['id']: "+window.localStorage['id']);  
-  $scope.enemies = Enemies.all(window.localStorage['id']);   
-   $scope.$root.showRefreshButton = true;
-   //$stateChangeStart - fired when the transition begins.
-   $scope.$on("$stateChangeStart", function() {
-   $scope.$root.showRefreshButton = false;
+// This controller doesn't uses the service, and it shows places immediately - but first call to place detail is always null, so I'm calling twice
+.controller('EnemiesCtrl', function($scope, $http, $stateParams, Enemies,$state) {
+  $http.get('http://locarda.herokuapp.com/home/api',{user_id:window.localStorage['id']}).then(function(resp) {
+    $scope.enemies = resp.data;
+	$scope.$root.showRefreshButton = true;
+    $scope.$on("$stateChangeStart", function() {
+    $scope.$root.showRefreshButton = false;
+	// one more call b/c bug mentioned above. enemies is always empty for the first time. until I make asolution of populating enemies
+	// immediately I will call API twice 
+	$scope.enemies = Enemies.all(window.localStorage['id']); 
   })
-  
-
-  
-  /*
-  // Search function, todo
-   $scope.search = function () {
-            Enemies.findByName($scope.searchKey).then(function (employees) {
-                $scope.employees = employees;
-            });
-        }
-  */
-
+	
+  }, function(err) {
+    alert('Error: '+err.status+ ' \nKontaktirajte administratora' );
+    // err.status will contain the status code
+  })
 })
 
-.controller('EnemiesDetailCtrl', function($scope, $stateParams, Enemies,$state) {
-  $scope.enemy = Enemies.get($stateParams.enemyId);
+.controller('EnemiesDetailCtrl', function($scope, $stateParams, Enemies, $state) {
+   console.log($stateParams.enemyId);
+   $scope.nekaj = Enemies.get($stateParams.enemyId);
+   console.log($scope.nekaj );
+   if ($scope.nekaj) {
+   $scope.enemy = Enemies.get($stateParams.enemyId);
+   }
+   // $scope.enemy = $scope.enemies[$stateParams.enemyId];
   
    $scope.checkIn = function() {
    //alert('Call to Rails Locarda API checkIn, userId: : '+window.localStorage['id']+' placeId: '+$stateParams.enemyId);
@@ -198,3 +210,13 @@ angular.module('starter.controllers', [])
 
 .controller('AccountCtrl', function($scope) {
 });
+  
+  
+/*
+// Search function, todo
+ $scope.search = function () {
+          Enemies.findByName($scope.searchKey).then(function (employees) {
+              $scope.employees = employees;
+          });
+      }
+*/
