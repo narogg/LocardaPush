@@ -25,13 +25,14 @@
 		</div>
 	 </div>
 	 -->
+	 <!--
 	  <div class="row" >
 
 		<div class="col col-67">		
 		<!--		          
         <h4><strong>{{enemy.name}}</strong></br> <small>{{enemy.description}}</small></br> 
 		</br> 
-		-->
+		
 		<img  ng-src="http://locarda.herokuapp.com/{{enemy.image_url}}" width="100" height="100"/>
 		<h4>{{enemy.rewards}}</h4>
 		</div>
@@ -42,15 +43,27 @@
 	      </button>
 	      </div>
 	 </div>
-
-	   
+	 -->
+	  <div class="item item-body center">
+          <img ng-src="http://locarda.herokuapp.com/{{enemy.image_url}}">		  
+      </div>
+	  
+	  <div class="card">
+			<div class="item item-text-wrap">
+				<strong>{{enemy.rewards}}</strong>
+			</div>
+	  </div>
+	  
+	  <button class="button button-full button-assertive" ng-click="checkIn()">
+			Prijavi se! &nbsp;<i class="icon ion-checkmark "></i> 
+	  </button>
 	  
       <div class="list card">
           <a class="item item-icon-left"  ><i class="icon ion-flag"></i>Va&#353;i bodovi: <p ng-show="enemy.points != null"><span class="badge badge-assertive">{{enemy.points}}</span></p>
 																						  <p ng-show="enemy.points == null"><span class="badge badge-assertive">0</span></p></a>
           <a ng-show="enemy.tel     != null" class="item item-icon-left" href="tel:{{enemy.tel}}"><i class="icon ion-ios7-telephone"></i>Tel.<p>{{enemy.tel}}</p></a>
-          <a ng-show="enemy.mob     != null" class="item item-icon-left" href="tel:{{enemy.mob}}"><i class="icon ion-ios7-telephone"></i>Mob.<p>{{enemy.mob}}</p></a>
-          <a ng-show="enemy.mob     != null" class="item item-icon-left" href="sms:{{enemy.mob}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{enemy.mob}}</p></a>
+          <a ng-show="enemy.mob     != null" class="item item-icon-left" href="tel:{{enemy.mob}}"><i class="icon ion-iphone"></i>Mob.<p>{{enemy.mob}}</p></a>
+         <!-- <a ng-show="enemy.mob     != null" class="item item-icon-left" href="sms:{{enemy.mob}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{enemy.mob}}</p></a>-->
           <a ng-show="enemy.email   != null" class="item item-icon-left" href="mailto:{{enemy.email}}"><i class="icon ion-ios7-email"></i>Email<p>{{enemy.email}}</p></a>
 		  <a ng-show="enemy.address != null" class="item item-icon-left" ><i class="icon ion-clipboard"></i>Adresa<p>{{enemy.address}} </p></a>
       </div>
