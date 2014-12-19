@@ -1,17 +1,9 @@
 angular.module('starter.controllers', [])
 
-//.controller('DashiCtrl', function($scope,$state) {
-//	$scope.settings = function() {
-//		//go to dash state
-//	$state.go('tab.dash')
-//	}
-//})
-
-
 /**
- * And of course we define a controller for our route.
+ * These are functions communicating with the Devise gem in backend
  */
-.controller( 'DashCtrl', function LoginController( $scope, $http, $state ) {
+.controller( 'DashCtrl', function LoginController( $scope, $http, $state,$ionicLoading ) {
   $scope.login_user = {email: null, password: null};
   $scope.login_error = {message: null, errors: {}};    
   // Locally stored email value that will be shown in settings (dash) view
@@ -56,52 +48,47 @@ angular.module('starter.controllers', [])
       .success(function(data, status){
         if (status == 201 || status == 204){
 			if (typeof data.id != 'undefined') {
-          parameters.error_entity.message = parameters.success_message;
-		  //parameters.error_entity.message = 'Ulogirali ste se!';			
-			console.log('Status: '+status +', message: '+parameters.error_entity.message+'User id je: '+ data.id);
-			//if user.id is undefined go to login with error msg because it is a unexisting user - either register or use existing...
-			
-			// If there is no userId locally - store it, otherwise don't touch it - for now
-			//alert(localStorage.getItem('id'));
-			 //if(!!localStorage.getItem('id')){
-				window.localStorage['id'] = data.id;
-				window.localStorage['email'] = data.email;
-				alert('Hello, ' + data.email +' with ID of: '+data.id);
-			//};			
-			
-			
-			
-			
-		  //alert(parameters.error_entity.message);
-          $scope.reset_users();
-		  $state.go('tab.account');
-		  }
-		  else {
-				//if
-				parameters.error_entity.message = "Problem prilikom prijave. Kontaktirajte Administratora.";
-				}
-        } else {
-		  console.log(status+data.id);
-		  alert('Error: '+status);
-          if (data.error) {
-            parameters.error_entity.message = data.error;
-          } else {
-            // note that JSON.stringify is not supported in some older browsers, we're ignoring that
-            parameters.error_entity.message = "Success, but with an unexpected success code, potentially a server error, please report via support channels as this indicates a code defect.  Server response was: " + JSON.stringify(data);
-          }
-        }
+			  parameters.error_entity.message = parameters.success_message;
+			  //parameters.error_entity.message = 'Ulogirali ste se!';			
+			  console.log('Status: '+status +', message: '+parameters.error_entity.message+'User id je: '+ data.id);
+			  //if user.id is undefined go to login with error msg because it is a unexisting user - either register or use existing...			
+			  // If there is no userId locally - store it, otherwise don't touch it - for now
+			  window.localStorage['id'] = data.id;
+			  window.localStorage['email'] = data.email;
+			  $scope.reset_users();
+			  $state.go('tab.account');
+			}
+			else {
+			  //we have no used id from devise
+			  parameters.error_entity.message = "Problem prilikom prijave. Kontaktirajte Administratora.";
+			}
+			}
+            // we have no 201 or 204 response, strange response			
+			else {
+				console.log(status+data.id);
+				alert('Error: '+status);					
+				if (data.error) {
+					parameters.error_entity.message = data.error;
+					} else {
+					parameters.error_entity.message = "Success, but with an unexpected success code, potentially a server error, please report via support channels as this indicates a code defect.  Server response was: " + JSON.stringify(data);
+					}
+			}
       })
       .error(function(data, status){
         if (status == 422) {
-          parameters.error_entity.errors = data.errors;          
+			parameters.error_entity.errors = data.errors;
+			// $ionicLoading.hide() is needed b/c it doesn't hide it for some reason on error rsp from rails backend
+			$ionicLoading.hide();
+			return false;
         } else {
-          if (data.error) {
-            parameters.error_entity.message = data.error;
-          } else {
-            // note that JSON.stringify is not supported in some older browsers, we're ignoring that
-            parameters.error_entity.message = "Unexplained error, potentially a server error, please report via support channels as this indicates a code defect.  Server response was: " + JSON.stringify(data);
-          }
-        }
+			if (data.error) {
+				parameters.error_entity.message = data.error;
+				$ionicLoading.hide();
+			} else {
+				parameters.error_entity.message = "Unexplained error, potentially a server error, please report via support channels as this indicates a code defect.  Server response was: " + JSON.stringify(data);
+				$ionicLoading.hide();
+			}
+		}
       });
   };
 

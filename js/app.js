@@ -40,6 +40,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
+
+// http://learn.ionicframework.com/formulas/loading-screen-with-interceptors/
+.run(function($rootScope, $ionicLoading) {
+  $rootScope.$on('loading:show', function() {
+    $ionicLoading.show({content: '<i class="icon ion-looping"></i>'});
+	// template: 'Trenutak...'
+  })
+
+  $rootScope.$on('loading:hide', function() {
+    $ionicLoading.hide();
+  })
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -90,5 +103,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/account');
 
-});
+})
+// http://learn.ionicframework.com/formulas/loading-screen-with-interceptors/
+.config(function($httpProvider) {
+  $httpProvider.interceptors.push(function($rootScope) {
+    return {
+      request: function(config) {
+        $rootScope.$broadcast('loading:show');
+        return config;
+      },
+      response: function(response) {
+        $rootScope.$broadcast('loading:hide');
+        return response;
+      }
+    }
+  })
+})
+;
 
