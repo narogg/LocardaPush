@@ -3,12 +3,13 @@ angular.module('starter.controllers', [])
 /**
  * These are functions communicating with the Devise gem in backend
  */
-.controller( 'DashCtrl', function LoginController( $scope, $http, $state,$ionicLoading ) {
+.controller( 'DashCtrl', function LoginController( $scope, $http, $state, $ionicLoading ) {
   $scope.login_user = {email: null, password: null};
   $scope.login_error = {message: null, errors: {}};    
   // Locally stored email value that will be shown in settings (dash) view
   //localStorage.removeItem('email');
   //localStorage.removeItem('id');
+  //console.log('maka');
   
   
   $scope.localEmail = localStorage.getItem('email');
@@ -61,6 +62,7 @@ angular.module('starter.controllers', [])
 			else {
 			  //we have no used id from devise
 			  parameters.error_entity.message = "Problem prilikom prijave. Kontaktirajte Administratora.";
+			  $ionicLoading.hide();
 			}
 			}
             // we have no 201 or 204 response, strange response			
@@ -71,6 +73,7 @@ angular.module('starter.controllers', [])
 					parameters.error_entity.message = data.error;
 					} else {
 					parameters.error_entity.message = "Success, but with an unexpected success code, potentially a server error, please report via support channels as this indicates a code defect.  Server response was: " + JSON.stringify(data);
+					$ionicLoading.hide();
 					}
 			}
       })
@@ -152,7 +155,7 @@ angular.module('starter.controllers', [])
 //})
 
 // This controller doesn't uses the service, and it shows places immediately - but first call to place detail is always null, so I'm calling twice
-.controller('EnemiesCtrl', function($scope, $http, $stateParams, Enemies,$state) {
+.controller('EnemiesCtrl', function($scope, $http, $stateParams, Enemies, $state, $ionicLoading) {
   $http.get('http://locarda.herokuapp.com/home/api',{user_id:window.localStorage['id']}).then(function(resp) {
     $scope.enemies = resp.data;
 	$scope.$root.showRefreshButton = true;
@@ -165,6 +168,7 @@ angular.module('starter.controllers', [])
 	
   }, function(err) {
     alert('Error: '+err.status+ ' \nKontaktirajte administratora' );
+	$ionicLoading.hide();
     // err.status will contain the status code
   })
 })

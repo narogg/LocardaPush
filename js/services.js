@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
 
 
-.factory('Enemies', ['$http', function($http, userId) {
+.factory('Enemies', ['$http', function($http, userId,$ionicLoading) {
     
   // Use a resource here that returns a JSON array
 	var enemies = null;
@@ -45,7 +45,10 @@ angular.module('starter.services', [])
 	    $http.post('http://locarda.herokuapp.com/carts/checkin',{userId:userId,placeId:placeId}).success(function(data){
 	    alert('Prijavljeni ste!');
 	    }).error(function(data)
-		{alert ('Niste prijavljeni!\nNapomenite osoblju.') }
+		{
+			alert ('Niste prijavljeni!\nNapomenite osoblju.');
+			$ionicLoading.hide();		
+		}
 	
 		
 		
