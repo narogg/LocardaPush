@@ -19,27 +19,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-  
-  
-  
-	//if(window.Connection) {
-	////alert('u if(window.Connection)  sam');
-    //   if(navigator.connection.type == Connection.NONE) {
-    //       $ionicPopup.confirm({
-    //           title: "Upozorenje!",
-    //           content: "Aktivirajte podatkovnu vezu."
-    //       })
-    //       .then(function(result) {
-    //           if(!result) {
-    //               ionic.Platform.exitApp();
-    //           }
-    //       });
-    //   }
-    //}
+	
+	if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Niste povezani na internet",
+                        content: "Nema podatkovne veze."
+                    })
+                    .then(function(result) {
+                        if(!result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+    }
     
   });
 })
-
 
 // http://learn.ionicframework.com/formulas/loading-screen-with-interceptors/
 .run(function($rootScope, $ionicLoading) {
