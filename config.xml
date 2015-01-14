@@ -10,7 +10,7 @@ xmlns:cdv="http://cordova.apache.org/ns/1.0">
         Goran M.
     </author>
 	
-	
+	<gap:plugin name="Device" value="org.apache.cordova.core.Device"/>
 	<gap:plugin name="org.apache.cordova.contacts" />
 	<gap:plugin name="org.apache.cordova.camera" />
 	<gap:plugin name="org.apache.cordova.network-information" />
