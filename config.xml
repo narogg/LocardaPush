@@ -8,12 +8,12 @@ xmlns:cdv="http://cordova.apache.org/ns/1.0">
     </description>
     <author email="gmandini@net.hr" href="http://nekaj.org">
         Goran M.
-    </author>
-	
+    </author>	
 	<gap:plugin name="org.apache.cordova.contacts" />
 	<gap:plugin name="org.apache.cordova.camera" />
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" />
+	<gap:plugin name="org.apache.cordova.device"/>
 	<icon src="img/icon.png" />
 	
 	<gap:platform name="android" />
