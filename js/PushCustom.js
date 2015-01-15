@@ -21,7 +21,7 @@ function onDeviceReady() {
                 }); // required!
             }
         } catch (err) {
-            txt = "There was an error on this page.\n\n";
+            txt = "There was an error in application.\n";
             txt += "Error description: " + err.message + "\n\n";
             alert(txt);
         }

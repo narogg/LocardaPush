@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 // http://learn.ionicframework.com/formulas/loading-screen-with-interceptors/
 .run(function($rootScope, $ionicLoading) {
   $rootScope.$on('loading:show', function() {
-    $ionicLoading.show({template: '<i class="ion-load-c"></i>\n' + ' Molimo pričekajte...'});
+    $ionicLoading.show({template: '<h3><i class="icon ion-looping"></i></h3>' + 'Molimo pričekajte...'});
 	// template: 'Trenutak...' ion-load-a  icon ion-looping
 	// content: '<i class="icon ion-looping"></i> '
   })
