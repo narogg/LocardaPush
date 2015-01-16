@@ -155,7 +155,7 @@ angular.module('starter.controllers', [])
 //})
 
 // This controller doesn't uses the service, and it shows places immediately - but first call to place detail is always null, so I'm calling twice
-.controller('EnemiesCtrl', function($scope, $http, $stateParams, Enemies, $state, $ionicLoading) {
+.controller('EnemiesCtrl', function($scope, $http, $stateParams, Enemies, $state, $ionicLoading, pushService) {
   $http.get('http://locarda.herokuapp.com/home/api',{user_id:window.localStorage['id']}).then(function(resp) {
     $scope.enemies = resp.data;
 	$scope.$root.showRefreshButton = true;
@@ -170,7 +170,19 @@ angular.module('starter.controllers', [])
     alert('Error: '+err.status+ ' \nKontaktirajte administratora' );
 	$ionicLoading.hide();
     // err.status will contain the status code
-  })
+  });
+
+  $pushService.register().then(function(result) {
+      // Success!
+	  alert('pushService success');	  
+   }, function(err) {
+      // An error occured. Show a message to the user
+	  alert('pushService error');	  
+   });
+  
+  
+  
+  
 })
 
 .controller('EnemiesDetailCtrl', function($scope, $stateParams, Enemies, $state) {
@@ -198,6 +210,28 @@ angular.module('starter.controllers', [])
    }
    
 })
+
+
+//push notification service
+.controller('MainCtrl', function($scope, $pushService) {
+
+  $pushService.register().then(function(result) {
+      // Success! 
+   }, function(err) {
+      // An error occured. Show a message to the user
+   });
+
+ })
+//
+
+
+/*
+app.controller('myController', ['$scope', 'cordovaReady', function($scope, cordovaReady) {
+     cordovaReady(function () {
+         // Device ready event has fired when this function fires
+     });
+}]);
+*/
 
 .controller('AccountCtrl', function($scope) {
 });
