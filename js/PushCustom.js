@@ -51,6 +51,9 @@ function onNotification(e) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 alert("regID = " + e.regid);
+				 window.localStorage.setItem("regID", e.regid);
+				 regID = window.localStorage.getItem("regID");
+				 alert("sad spremljeni regId"+regID);
             }
             break;
         case 'message':
