@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 }
     }
 	
-	alert('tudi');
+	// Here we are taking the GCM regID which is persisted locally in PushCustom.js
 	regID = window.localStorage.getItem("regID");
     alert("sad spremljeni regId"+regID);
     

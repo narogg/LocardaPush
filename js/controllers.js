@@ -13,6 +13,7 @@ angular.module('starter.controllers', [])
   
   
   $scope.localEmail = localStorage.getItem('email');
+  $scope.regID = localStorage.getItem('regID');
   //alert('Im in DashCtrl and email is: '+$scope.localEmail);
 
   $scope.signUp = function() {
