@@ -50,17 +50,21 @@ function onNotification(e) {
             if (e.regid.length > 0) {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
-                alert("regID = " + e.regid);
-				 window.localStorage.setItem("regID", e.regid);
-				 regID = window.localStorage.getItem("regID");
-				 alert("sad spremljeni regId"+regID);
+                alert("Google regID = " + e.regid);
+				
+				// persistedRegID = window.localStorage.getItem("regID");				
+				// if (persistedRegID != regID) {
+				window.localStorage.setItem("regID", e.regid);
+				// regID = window.localStorage.getItem("regID");
+				// }
+
             }
             break;
         case 'message':
             // if this flag is set, this notification happened while we were in the foreground.
             // you might want to play a sound to get the user's attention, throw up a dialog, etc.
             if (e.foreground) {
-				alert(e.message);
+				alert(e.title+ '\n' +e.message);
                 // on Android soundname is outside the payload.
                 // On Amazon FireOS all custom attributes are contained within payload
                 var soundfile = e.soundname || e.payload.sound;

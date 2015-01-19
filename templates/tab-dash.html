@@ -6,7 +6,7 @@
   
   <div class="card">
   <div class="item item-text-wrap ">
-  <div ng-if="localEmail">Prijavljeni ste kao <strong>{{localEmail}}</strong>. Nema potrebe za izmjenama. regID {{regID}}</div>
+  <div ng-if="localEmail">Prijavljeni ste kao <strong>{{localEmail}}</strong>. Nema potrebe za izmjenama.</div>
   <div ng-if="!localEmail">Niste prijavljeni! Ako ste prvi put ovdje Registrirajte se. Ako ste to vec napravili, prijavite se s Vasim emailom. </div>
   </div>
 </div>
@@ -17,9 +17,7 @@
 		<div ng-show="login_error.message" class="positive">
 			<p>{{login_error.message}}</p>
 		</div>
-
-		
-	<input type="text" ng-model="regID" placeholder="regID" value="{{regID}}">	
+			
 		
 	<label class="item item-input" ng-class="{positive: login_error.errors.email}">
 		<input type="text" ng-model="login_user.email" placeholder="Email" value="{{localEmail}}">				
@@ -55,8 +53,9 @@
 	<button class="button  button-block button-assertive "  ng-click="signUp()">
 		Registriraj
 	</button>
-
-
+	
+	<!-- to be removed-->
+	<input type="text" ng-model="regID" placeholder="regID" value="{{regID}}">	
 	
 	
   </ion-content>

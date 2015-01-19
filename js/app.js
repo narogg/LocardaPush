@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, $ionicPopup) {
+.run(function($ionicPlatform, $ionicPopup, $http) {
   $ionicPlatform.ready(function() {
   
   // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -35,8 +35,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
 	
 	// Here we are taking the GCM regID which is persisted locally in PushCustom.js
-	regID = window.localStorage.getItem("regID");
-    alert("sad spremljeni regId"+regID);
+	// and we will save in Locarda backend, for the actual userId in users model
+	regID  = window.localStorage.getItem("regID");
+	//regID  = "APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q";
+	userID = window.localStorage.getItem("id");
+	
+	$http({
+		//url: "http://localhost:3000/registrations/register.json", 
+		url:"http://locarda.herokuapp.com/registrations/register.json",
+		method: "POST",
+		params: {regID: regID, userID: userID }
+	}).success(function(data,status){
+		//alert('RegId sent success!\n'+data);	
+		//console.log('successo');		
+	}).error(function(data, status){		
+		alert ('Ups, problem prilikom registracije za notifikacije.\nHTTP status: ' +status);
+	});
+	// end of sending the GCM regID to backend
+	
     
   });
 })
