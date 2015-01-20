@@ -65,13 +65,11 @@ function onNotification(e) {
             // you might want to play a sound to get the user's attention, throw up a dialog, etc.
             if (e.foreground) {
 				if (e.title) {
-				alert(e.title+ '\n' +e.message);
+				alert(e.title + '\n' + e.message);
 				}
-				if (!e.title) {
-				alert('Naslov\n' +e.message);
+				else {
+				alert('Locarda\n' +e.message);
 				}
-				alert(e.nekaj);
-				alert(e.message.nekaj);
                 // on Android soundname is outside the payload.
                 // On Amazon FireOS all custom attributes are contained within payload
                 var soundfile = e.soundname || e.payload.sound;
