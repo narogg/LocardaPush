@@ -37,19 +37,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	// Here we are taking the GCM regID which is persisted locally in PushCustom.js
 	// and we will save in Locarda backend, for the actual userId in users model
 	regID  = window.localStorage.getItem("regID");
+	if (!regID) {
+	regID  = "APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q";
+	}
 	//regID  = "APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q";
+	//regID  = "APA91bHjCERT";
 	userID = window.localStorage.getItem("id");
-	
+	alert('prvi run, regID: '  +regID);
+	alert('userID: ' +userID);	
 	$http({
 		//url: "http://localhost:3000/registrations/register.json", 
 		url:"http://locarda.herokuapp.com/registrations/register.json",
 		method: "POST",
 		params: {regID: regID, userID: userID }
 	}).success(function(data,status){
-		//alert('RegId sent success!\n'+data);	
-		//console.log('successo');		
+		alert('RegId sent success!\n'+data.message);	
+		console.log('successo');		
 	}).error(function(data, status){		
-		alert ('Ups, problem prilikom registracije za notifikacije.\nHTTP status: ' +status);
+		alert ('Problem prilikom registracije za notifikacije.\nHTTP status: ' +status);
 	});
 	// end of sending the GCM regID to backend
 	
