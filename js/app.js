@@ -40,21 +40,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	// and we will save in Locarda backend, for the actual userId in users model
 	regID  = window.localStorage.getItem("regID");
 	if (!regID) {
-	regID  = "APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q";
+	regID  = "APA91-regID-missing";
 	}
 	//regID  = "APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q";
 	//regID  = "APA91bHjCERT";
 	userID = window.localStorage.getItem("id");
-	alert('prvi run, regID: '  +regID);
-	alert('userID: ' +userID);	
+	//alert('prvi run, regID: '  +regID);
+	//alert('userID: ' +userID);	
 	$http({
 		//url: "http://localhost:3000/registrations/register.json", 
 		url:"http://locarda.herokuapp.com/registrations/register.json",
 		method: "POST",
 		params: {regID: regID, userID: userID }
 	}).success(function(data,status){
-		alert('RegId sent success!\n'+data.message);	
-		console.log('successo');		
+		//alert('RegId sent success!\n'+data.message);	
+		//console.log('successo');		
 	}).error(function(data, status){		
 		alert ('Problem prilikom registracije za notifikacije.\nHTTP status: ' +status);
 	});
