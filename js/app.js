@@ -33,8 +33,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     });
                 }
     }
-	
-	// Here we are taking the GCM regID which is persisted locally in PushCustom.js
+
+  })
+  
+  // Here we are taking the GCM regID which is persisted locally in PushCustom.js
 	// and we will save in Locarda backend, for the actual userId in users model
 	regID  = window.localStorage.getItem("regID");
 	if (!regID) {
@@ -57,9 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 		alert ('Problem prilikom registracije za notifikacije.\nHTTP status: ' +status);
 	});
 	// end of sending the GCM regID to backend
-	
-    
-  });
+  
 })
 
 // http://learn.ionicframework.com/formulas/loading-screen-with-interceptors/
